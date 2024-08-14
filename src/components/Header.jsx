@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
-  const [currentTime, setCurrentTime] = useState(new Date());
+    const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    const timerID = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timerID);
+      const timerID = setInterval(() => setCurrentTime(new Date()), 1000);
+      return () => clearInterval(timerID);
   }, []);
 
   return (
-    <HeaderContainer>
-      <HeaderTable>
-        <TitleData><TitleText>Sentiment-Analysis<br/>Service</TitleText></TitleData>
-        <DateData>Date : <br/> {currentTime.toLocaleDateString()} {currentTime.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false })}</DateData>
-      </HeaderTable>
-    </HeaderContainer>
+      <HeaderContainer>
+          <HeaderTable>
+              <TitleData><TitleText>Sentiment-Analysis<br/>Service</TitleText></TitleData>
+              <DateData>Date : <br/> {currentTime.toLocaleDateString()} {currentTime.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false })}</DateData>
+          </HeaderTable>
+      </HeaderContainer>
   );
 };
 
@@ -26,13 +26,13 @@ const HeaderContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: -20px;
 `;
 
 const HeaderTable = styled.div`
     display: grid;
     grid-template-columns: 3fr 1fr; 
     width: 100%;
+    // height: 150px;
     text-align: center;
     border: 2px solid black;
     background: white;

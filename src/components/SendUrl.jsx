@@ -9,36 +9,40 @@ const SendUrl = () => {
     const [error, setError] = useState(null);
 
     const handleSubmit = () => {
-        const key = `${import.meta.env.VITE_API_KEY}urls`;
+        const key = import.meta.env.VITE_API_KEY;
+        const endpoint = `${key}/urls`; 
         
         if (!url) {
             setError("URL을 입력해주세요.");
             return;
         }
 
-        console.log("Sending request to:", key);
+        console.log("Sending request to:", endpoint);
         console.log("URL:", url);
 
-        axios.post(key, { url }, {
+        axios.post(endpoint, { url }, {
             headers: {
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
             }
         })
+
         .then(response => {
             console.log(response.data);
             setError("URL 전송 완료!")
         })
+
         .catch(error => {
             console.error("There has been a problem with you axios operation:", error);
             setError("데이터 전송 중에 에러가 발생하였습니다 - " + error.message);
         });
+        
     };
 
     return (
         <div>
             
             <Info> 
-                1번. 분석할 링크 URL을 입력하세요 : 
+                ※ 분석할 링크 URL을 입력하세요 : 
             </Info>
 
             <UrlContainer>
